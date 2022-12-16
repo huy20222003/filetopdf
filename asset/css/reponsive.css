@@ -221,5 +221,12 @@
     .contact__paraph {
         margin-bottom: 2rem;
     }
+    
+    .modal 
+    .modal-body {
+        margin: 0;
+        border-radius: 0;
+    }
 
 }
+
