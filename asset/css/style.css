@@ -687,6 +687,8 @@ p {
     position: relative;
     background-color: var(--white-color-bg);
     z-index: 9;
+    margin: auto;
+    border-radius: 10px;
     animation: scaleIn 0.3s linear;
 }
 
