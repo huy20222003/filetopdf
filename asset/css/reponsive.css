@@ -68,7 +68,6 @@
 
     .shown_sidebar {
         display: flex;
-        animation: scaleIn 0.3s linear;
     }
 
     .header__navbar
