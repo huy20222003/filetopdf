@@ -686,9 +686,7 @@ p {
 .modal_body {
     position: relative;
     background-color: var(--white-color-bg);
-    margin: auto;
     z-index: 9;
-    border-radius: 10px;
     animation: scaleIn 0.3s linear;
 }
 
