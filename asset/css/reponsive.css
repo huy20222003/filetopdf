@@ -223,9 +223,15 @@
     }
     
     .modal 
-    .modal-body {
+    .modal_body {
         margin: 0;
         border-radius: 0;
+    }
+    
+    .modal_inner 
+    .form
+    .form_input {
+        width: 100vw;
     }
 
 }
