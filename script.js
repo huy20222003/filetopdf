@@ -71,12 +71,13 @@ const app = {
                 let password = $(".form_input_reg .password");
                 let repeat_password = $(".repeat_password");
                 let email = $(".form_input_reg .email");
+                let checkBox = $(".checkBox");
                 let infoUser = {
                     username: username.value,
                     password: password.value
                 };
 
-                if (username.value.trim() === "" || password.value.trim() === "" || repeat_password.value.trim() === "" || email.value.trim() === "") {
+                if (username.value.trim() === "" || password.value.trim() === "" || repeat_password.value.trim() === "" || email.value.trim() === "" || checkBox.checked === false) {
                     notification({
                         title: "Error",
                         message: "Please check the information again."
