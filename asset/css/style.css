@@ -27,7 +27,7 @@ html {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 3;
     background-color: var(--white-color-text);
 }
 
@@ -61,6 +61,7 @@ html {
 .header__navbar-list 
 .header__navbar-content {
     display: flex;
+    margin-bottom: 0;
 }
 
 .header__navbar-content 
@@ -98,7 +99,67 @@ a {
     font-size: 1.4rem;
 }
 
+.header__navbar_dropdown-btn 
+button {
+    margin-right: 2rem;
+    font-size: 1.4rem;
+    background-color: var(--primary-color-bg);
+    border: none;
+    outline: none;
+    display: none;
+}
+
+.header__navbar_dropdown-btn 
+button:hover, 
+.header__navbar_dropdown-btn 
+button:active, 
+.header__navbar_dropdown-btn 
+button:focus {
+    background-color: var(--primary-color-bg);
+}
+
+.dropdown-menu 
+.dropdown-item {
+    font-size: 1.4rem;
+    width: 16rem;
+}
+
+.dropdown-menu 
+.dropdown-item:hover {
+    background-color: var(--primary-color-bg);
+    color: var(--white-color-text);
+}
+
 /*End: header*/
+
+/*Begin: Slider*/
+
+#carousel {
+    top: 8rem;
+}
+
+#carousel 
+.carousel-indicators 
+button {
+    background-color: #9aa6af;
+}
+
+#carousel 
+.carousel-inner {
+    width: 90%;
+    height: 20rem;
+    margin: auto;
+    border-radius: 1.6rem;
+}
+
+.carousel-inner 
+.carousel-item 
+img {
+    max-height: 20rem;
+    object-fit: contain;
+}
+
+/*End: Slider*/
 
 /* Begin: convert File*/
 
@@ -108,7 +169,7 @@ a {
 
 #convertFile 
 .convertFile__header {
-    padding: 3rem 2.5rem;
+    padding: 8rem 2.5rem 3rem;
     text-align: center;
 }
 
@@ -269,6 +330,11 @@ img {
     max-width: 5.6rem;
 }
 
+.convertFile__select__fileStatus 
+p {
+    margin: 0;
+}
+
 .convertFile__select 
 .convertFile__select__fileSize 
 #fileSize {
@@ -392,7 +458,7 @@ span {
 .content__service__item {
     max-width: 33.3333%;
     padding: 0 1.5rem;
-    margin: 6rem 0 6rem 0;
+    margin: 4rem 0 6rem 0;
 }
 
 .content__service__item 
@@ -493,7 +559,7 @@ span {
 .contact__paraph 
 .contact__paraph-item {
     padding: 5px 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .contact__paraph 
@@ -654,7 +720,9 @@ p {
 
 /*End: Footer*/
 
-.modal {
+/*Begin: Form */
+
+.modal_form {
     position: fixed;
     top: 0;
     left: 0;
@@ -675,7 +743,7 @@ p {
     }
 }
 
-.modal 
+.modal_form 
 .overlay {
     position: absolute;
     width: 100%;
@@ -695,6 +763,7 @@ p {
 .modal_body 
 .form {
     text-align: center;
+    display: none;
 }
 
 .form 
@@ -772,6 +841,7 @@ button {
     background: var(--primary-color-bg);
     color: var(--white-color-text);
     cursor: pointer;
+    margin-top: 2rem;
 }
 
 .form_btn 
@@ -809,7 +879,7 @@ a {
     border-radius: 5px;
     width: 28rem;
     height: 4rem;
-    margin: 2rem auto;
+    margin: 2rem;
     cursor: pointer;
 }
 
@@ -844,3 +914,41 @@ span {
     font-size: 1.4rem;
     line-height: 4rem;
 }
+
+/*End: Form*/
+
+/*Begin: Modal */
+.modal-header {
+    background-color: var(--primary-color-bg);
+}
+
+.modal-header 
+h5 {
+    font-size: 2rem;
+    color: var(--white-color-text);
+}
+
+.modal-header 
+button {
+    background-color: var(--white-color-bg);
+}
+
+.modal-body {
+    font-size: 1.6rem;
+}
+
+.modal-footer 
+button {
+    font-size: 1.6rem;
+}
+
+/*End: Modal*/
+
+/*Begin: Alert */
+
+.alert_status {
+    max-width: 80%;
+    margin: auto;
+}
+
+/*End: Alert*/
