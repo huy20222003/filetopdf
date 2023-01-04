@@ -88,6 +88,7 @@
         flex-direction: column;
         align-items: center;
         margin-top: 2rem;
+        padding: 0;
     }
 
     .header__navbar-content 
@@ -111,6 +112,21 @@
         background-color: transparent;
         margin-bottom: 2rem;
         color: var(--black-color-text);
+    }
+
+    .header__navbar_dropdown-btn {
+        margin: 1.4rem auto;
+    }
+
+    .header__navbar_dropdown-btn 
+    button {
+        margin: 0;
+    } 
+
+    #carousel 
+    .carousel-control-prev, 
+    .carousel-control-next {
+        display: none;
     }
 
     .convertFile__content{
@@ -143,12 +159,12 @@
 
     .convertFile__select 
     .convertFile__select__fileSize {
-        padding: 0 2rem 0 0;
+        padding: 0 2rem 0 7rem;
     }
 
     .convertFile__select 
     .convertFile__select__fileGoal{
-        padding: 0 0 0 2rem;
+        margin-left: 6rem;
     }
 
     .convertFile__select__fileGoal
@@ -221,14 +237,5 @@
     .contact__paraph {
         margin-bottom: 2rem;
     }
-    
-    .modal 
-    .modal_body {
-        margin: 0;
-        border-radius: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-    
-}
 
+}
