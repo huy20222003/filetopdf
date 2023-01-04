@@ -800,14 +800,13 @@ input {
     outline: none;
     border: 1px solid var(--gray-color-border);
     padding-left: 5px;
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
+    margin-bottom: 1rem;
+    border-radius: 4px;
 }
 
 .form_input_item 
 input:hover {
-    border-bottom: 1px solid var(--black-color-text);
+    border: 1px solid var(--black-color-text);
 }
 
 .form 
