@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Convert File Project of Huy">
-    <link rel="stylesheet" href="./asset/css/main.css">
-    <link rel="stylesheet" href="./asset/css/style.css">
-    <link rel="stylesheet" href="./asset/css/reponsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
         integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="./asset/css/main.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/css/reponsive.css">
     <title>Convert File Project</title>
 </head>
 
@@ -25,7 +27,7 @@
             <nav class="header__navbar">
                 <div class="header__navbar-logo">
                     <a href="#" class="logo">
-                        Huy Nguyen
+                        ConvertFile
                     </a>
                 </div>
 
@@ -47,25 +49,64 @@
                                 </a>
                             </li>
                             <li class="header__navbar-item">
-                                <a href="#content_doc" class="header__navbar-item__link">
+                                <a href="#content__doc" class="header__navbar-item__link">
                                     Document
                                 </a>
                             </li>
                             <li class="header__navbar-item">
-                                <a href="#content_contactForm" class="header__navbar-item__link">
+                                <a href="#content__contactForm" class="header__navbar-item__link">
                                     Contact
                                 </a>
                             </li>
                         </ul>
                         <div class="header__navbar-btn">
-                            <button class="header__navbar-btn-item signUp">Sign Up</button>
+                            <button class="header__navbar-btn-item">Sign Up</button>
                             <button class="header__navbar-btn-item">Log In</button>
                         </div>
+                        <div class="btn-group header__navbar_dropdown-btn">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              Account
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Account Infomation</a></li>
+                              <li><a class="dropdown-item" href="#">My file</a></li>
+                              <li><a class="dropdown-item" href="#">Setting</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item logOut" href="#">Log out</a></li>
+                            </ul>
+                          </div>
                     </div>
                 </div>
-
             </nav>
         </header>
+
+        <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="https://cdn.tgdd.vn/Files/2019/07/27/1182124/cac-dinh-dang-duoi-file-hinh-anh-pho-bien-hien-nay-1.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Pdf-js_logo.svg/1200px-Pdf-js_logo.svg.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.ketoan.vn/wp-content/uploads/2020/11/how-to-convert-jpg-to-pdf-main_thumb1200_16-9.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
         <!--Convert File -->
         <div id="convertFile">
             <!--Convert File Header-->
@@ -75,6 +116,8 @@
                     Convert your files to any format
                 </p>
             </div>
+
+            <div class="alert_status" id="convertFile_alert-status"></div>
             <!--Convert File Content-->
             <div class="convertFile__content">
                 <div class="convertFile__Item">
@@ -114,9 +157,9 @@
                 </div>
                 <!--Convert File Dropdown-->
                 <div class="convertFile__content__dropdown">
-                    <input type="file" name="chooseFile" id="chooseFile" hidden>
+                    <input type="file" name="chooseFile" id="chooseFile" accept="*/image" hidden>
                     <div class="convertFile__content__dropdown__chooseFile">
-                        <span class="convert__chooseFile">
+                        <span class="convert__chooseFile" data-bs-toggle="modal" data-bs-target="#popUp">
                             Select File
                         </span>
                         <i class="caret fa-solid fa-caret-down"></i>
@@ -154,6 +197,7 @@
                 </div>
             </div>
         </div>
+
         <!--Content-->
         <div id="content">
             <!--Content Service-->
@@ -259,7 +303,7 @@
                             <span>No Address</span>
                         </div>
                     </div>
-                    <form action="contact.php" method="GET" class="contact__form max-width50">
+                    <form class="contact__form max-width50">
                         <div class="contact__form__item">
                             <input type="text" name="name" id="form_name" placeholder="Name">
                         </div>
@@ -268,7 +312,7 @@
                         </div>
                         <div class="contact__form__item">
                             <textarea name="message" id="form_message" cols="" rows=""
-                            placeholder="Your Message"></textarea>
+                                placeholder="Your Message"></textarea>
                         </div>
                         <div class="contact__form__btn">
                             <button type="submit" class="form_btn">SEND</button>
@@ -330,107 +374,143 @@
         </div>
     </div>
 
-    <div class="modal">
+    <div class="modal_form">
         <div class="overlay"></div>
         <div class="modal_body">
-        <!-- Register Form -->
-        <div class="modal_inner">
-            <form class="form">
-                <div class="form_close">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="form_title">
-                    <h2>Register</h2>
-                </div>
-                <div class="form_input">
-                    <div class="form_input_item">
-                        <input type="text" name="username" class="username" placeholder="Your Username">
+            <!-- Register Form -->
+            <div class="modal_inner">
+                <div class="form">
+                    <div class="form_close">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
-                    <div class="form_input_item">
-                        <input type="email" name="email" class="email" placeholder="Your Email">
+                    <div class="form_title">
+                        <h2>Register</h2>
                     </div>
-                    <div class="form_input_item">
-                        <input type="password" name="password" class="password" placeholder="Your Password">
-                    </div>
-                    <div class="form_input_item">
-                        <input type="password" name="password" class="password" placeholder="Repeat Your Password">
-                    </div>
-                    <div class="form_policy">
-                        <input type="checkbox" name="policy">
-                        <span>Agree with
-                            <a href="#">Terms of Service</a>
-                            &
-                            <a href="#">Privacy Policy</a>
-                            ours.
-                        </span>
-                    </div>
-                    <div class="form_btn">
-                        <button>Register</button>
-                    </div>
-                    <div class="form_direct">
-                        <span>
-                            Do you already have an account?
-                            <a href="#">Log in now</a>
-                        </span>
-                    </div>
-                    <span class="or">or</span>
-                    <div class="form_social">
-                        <div class="form_social_fb-icon">
-                            <i class="fa-brands fa-facebook-f"></i>
+                    <div class="alert_status" id="reg_alert-status"></div>
+                    <div class="form_input_reg">
+                        <div class="form_input_item">
+                            <input type="text" name="username" class="username" placeholder="Your Username">
                         </div>
-                        <div class="form_social_gg-icon">
-                               <i class="fa-brands fa-google"></i>
-                           </div>
-                    </div>
-                </div>
-            </form>
-        </div>   
-
-        <!-- Login Form -->
-        <!-- <div class="modal_inner">
-            <div class="form">
-                <div class="form_close">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="form_title">
-                    <h2>Log In</h2>
-                </div>
-                <div class="form_input">
-                    <div class="form_input_item">
-                        <input type="text" name="username" class="username" placeholder="Your Username or Email">
-                    </div>
-                    <div class="form_input_item">
-                        <input type="password" name="password" class="password" placeholder="Your Password">
-                    </div>
-                    <div class="form_btn">
-                        <button>Log In</button>
-                    </div>
-                    <div class="form_direct">
-                        <span>
-                            Do not have an account?
-                            <a href="#">Register now</a>
-                        </span>
-                    </div>
-                    <span class="or">or</span>
-                    <div class="form_social">
-                        <div class="form_social_fb">
+                        <div class="form_input_item">
+                            <input type="email" name="email" class="email" placeholder="Your Email">
+                        </div>
+                        <div class="form_input_item">
+                            <input type="password" name="password" class="password" placeholder="Your Password">
+                        </div>
+                        <div class="form_input_item">
+                            <input type="password" name="password" class="repeat_password"
+                                placeholder="Repeat Your Password">
+                        </div>
+                        <div class="form_policy">
+                            <input type="checkbox" name="policy">
+                            <span>Agree with
+                                <a href="#">Terms of Service</a>
+                                &
+                                <a href="#">Privacy Policy</a>
+                                ours.
+                            </span>
+                        </div>
+                        <div class="form_btn">
+                            <button class="register_btn" data-bs-toggle="modal" data-bs-target="#popUp">Register</button>
+                        </div>
+                        <div class="form_direct">
+                            <span>
+                                Do you already have an account?
+                                <a href="#">Log in now</a>
+                            </span>
+                        </div>
+                        <span class="or">or</span>
+                        <div class="form_social">
                             <div class="form_social_fb-icon">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </div>
-                            <span class="form_social_fb-desc">Login with Facebook</span>
+                            <div class="form_social_gg-icon">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
                         </div>
-                        <div class="form_social_gg">
-                           <div class="form_social_gg-icon">
-                               <i class="fa-brands fa-google"></i>
-                           </div>
-                            <span class="form_social_fb-desc">Login with Google</span>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="form_close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                    <div class="form_title">
+                        <h2>Log In</h2>
+                    </div>
+                    <div class="form_input_logIn">
+                        <div class="form_input_item">
+                            <input type="text" name="username" class="username" placeholder="Your Username or Email">
+                        </div>
+                        <div class="form_input_item">
+                            <input type="password" name="password" class="password" placeholder="Your Password">
+                        </div>
+                        <div class="form_btn">
+                            <button class="logIn_btn" data-bs-toggle="modal" data-bs-target="#popUp">Log In</button>
+                        </div>
+                        <div class="form_direct">
+                            <span>
+                                Do not have an account?
+                                <a href="#">Register now</a>
+                            </span>
+                        </div>
+                        <span class="or">or</span>
+                        <div class="form_social">
+                            <div class="form_social_fb">
+                                <div class="form_social_fb-icon">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </div>
+                                <span class="form_social_fb-desc">Login with Facebook</span>
+                            </div>
+                            <div class="form_social_gg">
+                                <div class="form_social_gg-icon">
+                                    <i class="fa-brands fa-google"></i>
+                                </div>
+                                <span class="form_social_fb-desc">Login with Google</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>   -->
+        </div>
+    </div>   
+    
+    <!-- Modal -->
+    <div class="modal fade" id="popUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Please login or register to take action
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <script type="text/javascript" src="script.js"></script>
+
+    <!-- Alert -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+      </svg>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+      crossorigin="anonymous"></script> 
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>     
+<script type="text/javascript" src="./js/script.js"></script>
 </body>
 
 </html>
