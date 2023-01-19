@@ -1,0 +1,239 @@
+@media screen and (min-width: 740px) and (max-width: 1024px) {
+    .header__sidebar {
+        width: 40rem;
+    }
+
+    .convertFile__content__background
+    .convertFile__loading {
+        padding: 1.4rem;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn-choose {
+        width: 90%;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__dropbox
+    span {
+        font-size: 1.5rem;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__ggdrive
+    span {
+        font-size: 1.5rem;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__change {
+        border-radius: 5px;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__change 
+    .arrows {
+        font-size: 1.8rem;
+    }
+
+    #content .content__service { 
+       margin: 0 auto;
+    }
+
+    .content__service .content__service__item {
+        max-width: 50%;
+     }
+
+    .content__service__item 
+    .content__service__item__title, 
+    .content__service__item__desc {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 739px) {
+    .header__navbar 
+    .header__navbar-toggle {
+        position: relative;
+        top: 0.5rem;
+        right: 1rem;
+        display: block;
+        z-index: 2;
+    }
+
+    .header__navbar
+    .header__navbar-list {
+        flex-direction: column-reverse;
+        background-color: var(--white-color-bg);
+        position: fixed;
+        top: 6rem;
+        left: 2rem;
+        right: 2rem;
+        justify-content: flex-end;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        animation: scaleIn 0.3s ease-in-out;
+        transform-origin: top right;
+        display: none;
+    }
+    
+    .shown_sidebar {
+        display: flex !important;
+    }
+    
+    .header__navbar-list 
+    .header__navbar-content
+    {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+        padding: 0;
+    }
+
+    .header__navbar-content 
+    .header__navbar-item {
+       margin-bottom: 2rem;
+    }
+
+    .header__navbar-list 
+    .header__navbar-btn 
+    {
+        flex-direction: column;
+        margin-top: 4rem;
+    }
+
+
+    .header__navbar-list 
+    .header__navbar-btn-item {
+        border: 1px solid gray;
+        padding: 1.4rem 12rem;
+        border-radius: 5px;
+        background-color: transparent;
+        margin-bottom: 2rem;
+        color: var(--black-color-text);
+    }
+
+    .header__navbar_dropdown-btn {
+        margin: 1.4rem auto;
+    }
+
+    .header__navbar_dropdown-btn 
+    button {
+        margin: 0;
+    } 
+
+    #carousel 
+    .carousel-control-prev, 
+    .carousel-control-next {
+        display: none;
+    }
+
+    .convertFile__content{
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .convertFile__content
+    .convertFile__select {
+        flex-wrap: wrap;
+    }
+
+    .convertFile__select 
+    .convertFile__select__fileInfo {
+        padding: 0 0 0 2rem;
+    }
+
+    .convertFile__select 
+    .convertFile__select__fileInfo 
+    img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+    }
+
+    .convertFile__select 
+    .convertFile__select__fileStatus {
+        margin:  0 2rem;
+    }
+
+    .convertFile__select 
+    .convertFile__select__fileSize {
+        padding: 0 2rem 0 7rem;
+    }
+
+    .convertFile__select 
+    .convertFile__select__fileGoal{
+        margin-left: 6rem;
+    }
+
+    .convertFile__select__fileGoal
+    .convertFile__select__File__to {
+        padding: 0.2rem;
+    }
+    .convertFile__select
+    .convertFile__select__fileDelete 
+    .convertFile__select__delete {
+        padding: 0 2rem 0.5rem 0;
+        font-size: 2.4rem;
+    }
+
+    .convertFile__content__background
+    .convertFile__loading {
+        padding: 1.4rem;
+        width: 32rem;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__dropbox, 
+    .convertFile__select__File__btn__ggdrive {
+        height: 5rem;
+    }
+
+    .convertFile__select__File__btn
+    .convertFile__select__File__btn__change {
+        height: 5rem;
+        border-radius: 0;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__dropbox
+    span {
+        display: none;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__ggdrive 
+    span {
+        display: none;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__change 
+    span {
+    font-size: 1.6rem;
+    line-height: 5rem;
+    padding-left: 3rem;
+    }
+
+    .convertFile__select__File__btn 
+    .convertFile__select__File__btn__change 
+    .arrows {
+        font-size: 1.5rem;
+        line-height: 5rem;
+    }
+
+    .content__service 
+    .content__service__item {
+        max-width: 100%;
+    }
+
+    #content__contactForm 
+    .contact__info {
+        flex-direction: column;
+    }
+
+    .contact__info 
+    .contact__paraph {
+        margin-bottom: 2rem;
+    }
+
+}
