@@ -396,7 +396,7 @@ const app = {
         //Hàm get số mili giây còn lại
         function timer() {
             let nowdate = new Date().getTime();
-            let enddate = new Date("jan 16, 2023 10:00:00").getTime();
+            let enddate = new Date("jan 22, 2023 10:00:00").getTime();
             let remain = enddate - nowdate;
 
             return remain;
