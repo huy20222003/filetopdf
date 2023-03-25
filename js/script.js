@@ -343,7 +343,11 @@ const app = {
                 if(isValidExtension(nameOfFile)) {
                     performFunction();
                 } else {
-                    alert("We are only support JPG, JPEG, PNG");
+                    alertInfo({
+                        id: "#convertFile_alert-status",
+                        type: "danger",
+                        message: "We are only support JPG, JPEG, PNG"
+                    });
                 }
             });
 
@@ -356,10 +360,9 @@ const app = {
                 convertFileLoading.style.display = "none";
                 alertInfo({
                     id: "#convertFile_alert-status",
-                    type: "",
-                    message: ""
+                    type: "success",
+                    message: "Delete Sucsess"
                 });
-                console.log(123);
             }
 
             //addEventListener click cho hàm deleteFile
@@ -401,7 +404,7 @@ const app = {
                 alert.innerHTML =
                     `<div class="alert alert-${type} d-flex align-items-center" role="alert">
                     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="${icon}"/></svg>
-                    <div>
+                    <div style="font-size: 14px; margin-left: 8px; line-height: 25px;">
                         ${message}
                     </div>
                 </div>`
