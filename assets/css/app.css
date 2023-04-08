@@ -970,12 +970,34 @@ button {
 
 /**Begin: My file page*/
 
+.my_file {
+    margin-top: 6rem;
+}
+
 .my_file  
 .myFile_title {
-    margin: 4rem 0 0 0;
+    padding: 4rem;
+    text-align: center;
 }
 
 .myFile_title 
 h2 {
-    font-size: 4rem;
+    font-size: 3.6rem;
+}
+
+.my_file 
+.table_myfile {
+    max-width: 60%;
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.table_myfile 
+tbody 
+tr 
+td:nth-child(4) {
+    color: #008849;
 }

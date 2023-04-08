@@ -218,7 +218,8 @@ const app = {
                 headerToggle.classList.replace("fa-xmark", "fa-bars");
                 selectFile.removeAttribute("data-bs-toggle");
                 selectFile.removeAttribute("data-bs-target");
-                changeFile();            
+                changeFile();    
+                listMyFile();        
             } else {
                 notification({
                     title: "Error",
@@ -248,6 +249,7 @@ const app = {
                 if (!file) return;
                 let fileName = $("#fileName");
                 let fileSize = $("#fileSize");
+                let fileStatusChange = "ERROR";
 
                 function getFileExtension(filename) {
                     return filename.split(".").pop();
@@ -306,20 +308,39 @@ const app = {
                                 content: [
                                     {
                                         image: dataURL,
-                                
+                                        width: 300,
+                                        height: 200
                                     }
                                 ]
                             }
-                            const pdfDoc = pdfMake.createPdf(docDefinition);
 
-                            reader.readAsDataURL(file);
+                            let fileInfo = {
+                                fileName: file.name,
+                                fileSize: fixSize,
+                                fileStatusChange,
+                            }
+
+                            pdfMake.createPdf(docDefinition).getBase64((encodedString) => {
+                                let pdfData = atob(encodedString);
+                                let binaryData = new Uint8Array(pdfData.length);
+                                for (var i = 0; i < pdfData.length; i++) {
+                                    binaryData[i] = pdfData.charCodeAt(i);
+                                }
+                                fileInfo.binaryData = binaryData;
+                            });
+
                             if(pdfArrayStorage == null) {
                                 pdfDocArray = [];
                             } else {
                                 pdfDocArray = JSON.parse(pdfArrayStorage);
                             }
-                            pdfDocArray.push(pdfDoc);
+    
+                            pdfDocArray.push(fileInfo);
                             localStorage.setItem("PDFARRAY", JSON.stringify(pdfDocArray));
+
+                            fileStatusChange = "SUCCESS";
+                            reader.readAsDataURL(file);
+
                             btnDownload.classList.remove("d-none");
                             alertInfo({
                                 id: "#convertFile_alert-status",
@@ -367,6 +388,34 @@ const app = {
 
             //addEventListener click cho hàm deleteFile
             deleteFileSelect.addEventListener("click", deleteFile);
+        }
+
+        function listMyFile() {
+            let listFile = JSON.parse(localStorage.getItem("PDFARRAY"));
+            const table_myfile_body = $(".table_myfile tbody");
+            
+            if(table_myfile_body) {
+                const tr = document.createElement("tr");
+                if(listFile.length == 0) {
+                    tr.innerHTML = `
+                    <td>No found</td>`;
+                } else {
+                    listFile.map((item, index) => {
+                        const tr = document.createElement("tr");
+                        let binaryData = item.binaryData;
+                        let blob = new Blob([binaryData], {type: "application/pdf"});
+                        let url = URL.createObjectURL(blob);
+                        tr.innerHTML = `
+                            <td style = "width: 1rem;">${index + 1}</td>
+                            <td>${item.fileName}</td>
+                            <td>${item.fileSize}</td>
+                            <td>${item.fileStatusChange}</td>
+                            <td><a href = ${url} download = "PDF_DOCUMENT">Download</a></td>`;
+    
+                        table_myfile_body.append(tr);
+                    });
+                }
+            }
         }
 
         //Hàm đăng xuất khỏi tài khoản
