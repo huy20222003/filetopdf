@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://genk.mediacdn.vn/thumb_w/640/2015/pdf-icon-1425381965219.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Convert File Project of Huy">
@@ -109,7 +110,7 @@
             </nav>
         </header>
 
-        <section class="convertFile_page d-none">
+        <section class="convertFile_page">
             <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
@@ -374,7 +375,7 @@
 
         </section>
 
-        <section class="myFile_page">
+        <section class="myFile_page d-none">
             <div class="my_file">
                 <div class="myFile_title">
                     <h2>My File</h2>
@@ -446,7 +447,7 @@
                         <h2>Register</h2>
                     </div>
                     <div class="alert_status" id="reg_alert-status"></div>
-                    <div class="form_input_reg">
+                    <form class="form_input_reg">
                         <div class="form_input_item">
                             <input type="text" name="fullname" class="fullname" placeholder="Your Fullname"
                                 maxlength="50" required data-bs-toggle="tooltip" data-bs-placement="top"
@@ -467,7 +468,7 @@
                                 title="Minlength is 6 characters and Maxlength is 10 characters" />
                         </div>
                         <div class="form_input_item">
-                            <input type="password" name="password" class="repeat_password"
+                            <input type="password" name="repeat_password" class="repeat_password"
                                 placeholder="Repeat Your Password" minlength="6" maxlength="10" required data-bs-toggle="tooltip"
                                 data-bs-placement="top"
                                 title="Minlength is 6 characters and Maxlength is 10 characters" />
@@ -500,7 +501,7 @@
                                 <i class="fa-brands fa-google"></i>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 <div class="form">
@@ -510,7 +511,7 @@
                     <div class="form_title">
                         <h2>Log In</h2>
                     </div>
-                    <div class="form_input_logIn">
+                    <form class="form_input_logIn">
                         <div class="form_input_item">
                             <input type="text" name="username" class="username" placeholder="Your Username or Email" required />
                         </div>
@@ -541,7 +542,7 @@
                                 <span class="form_social_fb-desc">Login with Google</span>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

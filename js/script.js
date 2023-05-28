@@ -219,7 +219,6 @@ const app = {
                 selectFile.removeAttribute("data-bs-toggle");
                 selectFile.removeAttribute("data-bs-target");
                 changeFile();    
-                listMyFile();        
             } else {
                 notification({
                     title: "Error",
@@ -262,6 +261,8 @@ const app = {
                 function performFunction() {
                     let reader = new FileReader();
                     previewImg.src = URL.createObjectURL(file);
+                    let newImg = document.createElement("img");
+                    newImg.src = URL.createObjectURL(e.target.files[0]);
 
                     fileName.innerHTML = file.name;
                     let size = file.size / 1e6;
@@ -292,7 +293,6 @@ const app = {
 
                     //Hàm chuyển đổi file
                     convertFile.addEventListener("click", () => {
-                        let pdfArrayStorage = localStorage.getItem("PDFARRAY");
                         if (convertFile_to.value === "") {
                             convertFile_to.style.borderColor = "red";
                             alertInfo({
@@ -302,58 +302,26 @@ const app = {
                             });
                         } else {
                             convertFile_to.style.borderColor = "gray";
-                            const dataURL = reader.result;
-
-                            const docDefinition = {
-                                content: [
-                                    {
-                                        image: dataURL,
-                                        width: 300,
-                                        height: 200
-                                    }
-                                ]
-                            }
-
-                            let fileInfo = {
-                                fileName: file.name,
-                                fileSize: fixSize,
-                                fileStatusChange,
-                            }
-
-                            pdfMake.createPdf(docDefinition).getBase64((encodedString) => {
-                                let pdfData = atob(encodedString);
-                                let binaryData = new Uint8Array(pdfData.length);
-                                for (var i = 0; i < pdfData.length; i++) {
-                                    binaryData[i] = pdfData.charCodeAt(i);
-                                }
-                                fileInfo.binaryData = binaryData;
+                            window.jsPDF = window.jspdf.jsPDF;
+                            let imagePdf = new jsPDF();
+                            imagePdf.addImage(newImg, 10, 10);
+                            btnDownload.classList.remove("d-none");
+                            notification({
+                                title: "Successfully",
+                                message: "Wowld you like to download this file?"
                             });
-
-                            if(pdfArrayStorage == null) {
-                                pdfDocArray = [];
-                            } else {
-                                pdfDocArray = JSON.parse(pdfArrayStorage);
-                            }
-    
-                            pdfDocArray.push(fileInfo);
-                            localStorage.setItem("PDFARRAY", JSON.stringify(pdfDocArray));
+                            btnDownload.addEventListener("click", () => {
+                                imagePdf.save("ImageToPdf.pdf");
+                                deleteFile();
+                            });
 
                             fileStatusChange = "SUCCESS";
                             reader.readAsDataURL(file);
 
-                            btnDownload.classList.remove("d-none");
                             alertInfo({
                                 id: "#convertFile_alert-status",
                                 type: "success",
                                 message: "Convert File to PDF Success!"
-                            });
-                            notification({
-                                title: "Download",
-                                message: "Download"
-                            });
-                            btnDownload.addEventListener("click", () => {
-                                pdfDoc.download();
-                                deleteFile();
                             });
                         }
                     });
@@ -390,33 +358,33 @@ const app = {
             deleteFileSelect.addEventListener("click", deleteFile);
         }
 
-        function listMyFile() {
-            let listFile = JSON.parse(localStorage.getItem("PDFARRAY"));
-            const table_myfile_body = $(".table_myfile tbody");
+        // function listMyFile() {
+        //     let listFile = JSON.parse(localStorage.getItem("PDFARRAY"));
+        //     const table_myfile_body = $(".table_myfile tbody");
             
-            if(table_myfile_body) {
-                const tr = document.createElement("tr");
-                if(listFile.length == 0) {
-                    tr.innerHTML = `
-                    <td>No found</td>`;
-                } else {
-                    listFile.map((item, index) => {
-                        const tr = document.createElement("tr");
-                        let binaryData = item.binaryData;
-                        let blob = new Blob([binaryData], {type: "application/pdf"});
-                        let url = URL.createObjectURL(blob);
-                        tr.innerHTML = `
-                            <td style = "width: 1rem;">${index + 1}</td>
-                            <td>${item.fileName}</td>
-                            <td>${item.fileSize}</td>
-                            <td>${item.fileStatusChange}</td>
-                            <td><a href = ${url} download = "PDF_DOCUMENT">Download</a></td>`;
+        //     if(table_myfile_body) {
+        //         const tr = document.createElement("tr");
+        //         if(listFile.length == 0) {
+        //             tr.innerHTML = `
+        //             <td>No found</td>`;
+        //         } else {
+        //             listFile.map((item, index) => {
+        //                 const tr = document.createElement("tr");
+        //                 let binaryData = item.binaryData;
+        //                 let blob = new Blob([binaryData], {type: "application/pdf"});
+        //                 let url = URL.createObjectURL(blob);
+        //                 tr.innerHTML = `
+        //                     <td style = "width: 1rem;">${index + 1}</td>
+        //                     <td>${item.fileName}</td>
+        //                     <td>${item.fileSize}</td>
+        //                     <td>${item.fileStatusChange}</td>
+        //                     <td><a href = ${url} download = "PDF_DOCUMENT">Download</a></td>`;
     
-                        table_myfile_body.append(tr);
-                    });
-                }
-            }
-        }
+        //                 table_myfile_body.append(tr);
+        //             });
+        //         }
+        //     }
+        // }
 
         //Hàm đăng xuất khỏi tài khoản
         logOut.addEventListener("click", () => {
